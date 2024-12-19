@@ -1,4 +1,3 @@
-import './App.css';
 import { Navbar } from './Navbar';
 import { ThemeProvider } from './ThemeContext';
 import { TodoProvider } from './todos/TodoContext';
