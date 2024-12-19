@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const TodoContext = createContext();
 
@@ -37,37 +37,33 @@ export const TodoProvider = ({ children }) => {
         fetchTodos();
     }, []);
 
-    // Save todos whenever they change
-    useEffect(() => {
-        if (!isLoading) {
-            api.saveTodos(todos);
-        }
-    }, [todos, isLoading]);
+    const addTodo = (text) => {
+        const newTodo = { id: Date.now(), text, completed: false };
+        setTodos(prev => [...prev, newTodo]);
+        api.saveTodos([...todos, newTodo]);
+    };
 
-    const addTodo = useCallback((text) => {
-        setTodos((prev) => [
-            ...prev,
-            {
-                id: Date.now(),
-                text,
-                completed: false,
-            },
-        ]);
-    }, []);
-
-    const toggleTodo = useCallback((id) => {
-        setTodos((prev) =>
-            prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+    const toggleTodo = (id) => {
+        const newTodos = todos.map((todo) => 
+            todo.id === id ? { ...todo, completed: !todo.completed } : todo
         );
-    }, []);
+        setTodos(newTodos);
+        api.saveTodos(newTodos);
+    };
 
-    const deleteTodo = useCallback((id) => {
-        setTodos((prev) => prev.filter((todo) => todo.id !== id));
-    }, []);
+    const deleteTodo = (id) => {
+        const newTodos = todos.filter((todo) => todo.id !== id);
+        setTodos(newTodos);
+        api.saveTodos(newTodos);
+    };
 
-    const editTodo = useCallback((id, text) => {
-        setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
-    }, []);
+    const editTodo = (id, text) => {
+        const newTodos = todos.map((todo) => 
+            todo.id === id ? { ...todo, text } : todo
+        );
+        setTodos(newTodos);
+        api.saveTodos(newTodos);
+    };
 
     return (
         <TodoContext.Provider
