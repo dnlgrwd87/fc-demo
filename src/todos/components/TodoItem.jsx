@@ -9,6 +9,8 @@ export const TodoItem = ({ todo }) => {
     const [editText, setEditText] = useState(todo.text);
     const inputRef = useRef(null);
 
+    // we do this in a useEffect instead of calling it directly in the onDoubleClick event handler
+    // because the input won't be in the DOM until the next render after isEditing is set to true.
     useEffect(() => {
         if (isEditing) {
             inputRef.current?.focus();
