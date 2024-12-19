@@ -1,15 +1,16 @@
 import './App.css';
-import { Homepage } from './Homepage';
 import { Navbar } from './Navbar';
 import { ThemeProvider } from './ThemeContext';
-import { CountProvider } from './CountContext';
+import { TodoProvider } from './todos/TodoContext';
+import { TodoDashboard } from './todos/TodoDashboard';
+
 function App() {
   return (
     <ThemeProvider>
-      <CountProvider>
+      <TodoProvider>
         <Navbar />
-        <Homepage />
-      </CountProvider>
+        <TodoDashboard />
+      </TodoProvider>
     </ThemeProvider>
   );
 }
