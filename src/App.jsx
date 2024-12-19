@@ -4,14 +4,14 @@ import { TodoProvider } from './todos/TodoContext';
 import { TodoDashboard } from './todos/TodoDashboard';
 
 function App() {
-  return (
-    <ThemeProvider>
-      <TodoProvider>
-        <Navbar />
-        <TodoDashboard />
-      </TodoProvider>
-    </ThemeProvider>
-  );
+    return (
+        <ThemeProvider>
+            <TodoProvider>
+                <Navbar />
+                <TodoDashboard />
+            </TodoProvider>
+        </ThemeProvider>
+    );
 }
 
 export default App;

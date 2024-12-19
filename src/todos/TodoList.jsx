@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTodo } from './TodoContext';
 import { useTheme } from '../ThemeContext';
 import { TodoItem } from './TodoItem';
@@ -7,6 +7,11 @@ export const TodoList = () => {
     const { todos, addTodo } = useTodo();
     const { isDark } = useTheme();
     const [newTodo, setNewTodo] = useState('');
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,6 +30,7 @@ export const TodoList = () => {
             <form onSubmit={handleSubmit} className="mb-4">
                 <div className="flex gap-2">
                     <input
+                        ref={inputRef}
                         type="text"
                         value={newTodo}
                         onChange={(e) => setNewTodo(e.target.value)}
