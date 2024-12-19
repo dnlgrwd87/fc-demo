@@ -4,6 +4,7 @@ import { TodoList } from './TodoList';
 import { TodoStats } from './TodoStats';
 
 export const TodoDashboard = () => {
+    // Using functional components, we can easily subscribe to multiple contexts
     const { isLoading } = useTodo();
     const { isDark } = useTheme();
 
