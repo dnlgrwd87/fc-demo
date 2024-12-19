@@ -23,9 +23,12 @@ export const TodoList = () => {
 
     return (
         <div className={`max-w-md mx-auto p-4 ${isDark ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow`}>
-            <h1 className={`text-2xl font-bold mb-4 ${isDark ? 'text-gray-100' : 'text-gray-800'}`}>
-                Todo List
-            </h1>
+            <div className="flex flex-col mb-4">
+                <h1 className={`text-2xl font-bold ${isDark ? 'text-gray-100' : 'text-gray-800'}`}>
+                    Todo List
+                </h1>
+                <div className="text-sm text-gray-500">Double click an item to edit it</div>
+            </div>
             
             <form onSubmit={handleSubmit} className="mb-4">
                 <div className="flex gap-2">

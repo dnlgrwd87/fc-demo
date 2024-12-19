@@ -4,9 +4,7 @@ export const Navbar = () => {
     const { toggleTheme, isDark } = useTheme();
 
     return (
-        <nav
-            className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} p-4 shadow-lg`}
-        >
+        <nav className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} p-4 shadow-lg`}>
             <div className="container mx-auto flex justify-between items-center">
                 <h1 className={`${isDark ? 'text-white' : 'text-gray-900'} text-xl font-bold`}>
                     Functional Components Demo

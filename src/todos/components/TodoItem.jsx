@@ -54,7 +54,7 @@ export const TodoItem = ({ todo }) => {
                     className={`flex-1 ${todo.completed
                             ? 'line-through text-gray-500'
                             : isDark ? 'text-gray-100' : 'text-gray-800'
-                        }`}
+                    }`}
                     onDoubleClick={() => setIsEditing(true)}
                 >
                     {todo.text}

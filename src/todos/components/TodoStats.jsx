@@ -1,5 +1,6 @@
 import { useTodo } from '../contexts/TodoContext';
 import { useTheme } from '../../contexts/ThemeContext';
+import { useMemo } from 'react';
 
 export const TodoStats = () => {
     const { todos } = useTodo();
@@ -7,7 +8,14 @@ export const TodoStats = () => {
 
     const totalTodos = todos.length;
     const completedTodos = todos.filter((todo) => todo.completed).length;
-    const completionRate = totalTodos ? Math.round((completedTodos / totalTodos) * 100) : 0;
+    
+    // useMemo will memoize the result of the function and only re-calculate when the specified dependencies change.
+    // NOTE: This is just an example of how to use useMemo to optimize performance.
+    // It is not really useful for this calculation, as it is not expensive,
+    // and overusing useMemo isn't a great idea. React is already very fast.
+    const completionRate = useMemo(() => {
+        return totalTodos ? Math.round((completedTodos / totalTodos) * 100) : 0;
+    }, [totalTodos, completedTodos]);
 
     const stats = [
         {
