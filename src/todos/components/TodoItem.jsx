@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { useTodo } from './TodoContext';
-import { useTheme } from '../ThemeContext';
+import { useTodo } from '../contexts/TodoContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export const TodoItem = ({ todo }) => {
     const { toggleTodo, deleteTodo, editTodo } = useTodo();
